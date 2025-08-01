@@ -1,0 +1,65 @@
+<%- include('partials/header.ejs'); -%>
+
+  <!-- pagina principala-->
+
+  <body>
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">My library</h1>
+          <p class="lead text-body-secondary">✨A good book goes way beyond that last page✨</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="album py-5 bg-body-tertiary">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <!-- afiseaza cate un cartonas pentru fiecare carte din db-->
+          <% books.forEach(book=> { %>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column shadow-sm">
+                <% if (book.coperta) { %>
+                  <img src="<%= book.coperta %>" class="card-img-top h-100 d-flex flex-column" alt="Coperta <%= book.titlu %>">
+                  <% } else { %>
+                    <svg aria-label="Placeholder: Thumbnail" class="bd-placeholder-img card-img-top" width="100%"
+                      height="225" preserveAspectRatio="xMidYMid slice" role="img" xmlns="http://www.w3.org/2000/svg">
+                      <title>Placeholder</title>
+                      <rect width="100%" height="100%" fill="#55595c"></rect>
+                      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                    </svg>
+                    <% } %>
+                      <div class="card-body">
+                        <h5 class="card-text">
+                          <%=book.titlu%>
+                        </h5>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="btn-group">
+                            <!-- folosim post pentru a simula o cerere de tip "DELETE" (delete nu e acceptata in formulare HTML)-->
+
+                            <form action="/delete/<%=book.id%>" method="POST" style="display:inline;"></form>
+                            <a href="/view/<%=book.id%>" class="btn btn-sm btn-outline-secondary">View</button>
+                              <a href="/edit/<%=book.id%>" class="btn btn-sm btn-outline-secondary">Edit</a>
+
+
+                              <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
+                              </form>
+                          </div> <small class="text-body-secondary">
+                            <%=book.rating%>⭐
+                          </small>
+                        </div>
+                      </div>
+              </div>
+            </div>
+            <%});%>
+
+        </div>
+      </div>
+    </div>
+
+    <%- include('partials/footer.ejs'); -%>
+
+  </body>
+
+  </html>

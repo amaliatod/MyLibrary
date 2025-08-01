@@ -1,0 +1,23 @@
+<%- include('partials/header.ejs'); -%>
+
+<!-- pagina individuala a fiecarei carti -->
+<div class="container mt-5">
+  <div class="row align-items-center">
+    <!-- Poză în stânga -->
+    <div class="col-md-6">
+      <img src="<%= books.coperta %>" alt="Poză" class="img-fluid rounded">
+    </div>
+
+    <!-- Text în dreapta -->
+    <div class="col-md-6">
+      <h2><%=books.titlu%></h2>
+      <h3><%=books.rating%>⭐</h3>
+      <p>
+        <%=books.descriere%>
+      </p>
+      <a href="/" class="btn btn-sm btn-outline-secondary">Back to your library</a>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer.ejs'); -%>

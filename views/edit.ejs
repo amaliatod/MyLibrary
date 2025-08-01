@@ -1,0 +1,28 @@
+<!-- pagina de editare a unei carti deja adaugate-->
+
+<%- include('partials/header.ejs'); -%>
+
+
+<!-- trimite un request de tipul "post"(trimite date de la browser catre server{serverul primeste cererea si o proceseaza}) 
+ catre ruta "/edit/{id-ul cartii}" in care este trimis formularul cu datele editate ale cartii -->
+<form action="/edit/<%=books.id%>" method="post">
+
+  <div class="mb-3">
+    <label for="InputTitle" class="form-label">Title</label>
+    <input type="text" class="form-control" name="InputTitle" value="<%=books.titlu%>" >
+  </div>
+
+  <div class="mb-3">
+    <label for="InputDescription" class="form-label">Description</label>
+    <input type="text" class="form-control" name="InputDescription" value="<%=books.descriere%>" >
+  </div>
+
+  <div class="mb-3">
+    <label for="InputRating" class="form-label">Rating</label>
+    <input type="text" class="form-control" name="InputRating" value="<%=books.rating%>">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+  <%- include('partials/footer.ejs'); -%>

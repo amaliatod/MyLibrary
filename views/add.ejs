@@ -1,0 +1,27 @@
+<!-- pagina de adaugare a unei carti noi-->
+<%- include('partials/header.ejs'); -%>
+
+
+<!-- trimite un request de tipul "post"(trimite date de la browser catre server{serverul primeste cererea si o proceseaza}) 
+ catre ruta "/add" in care este trimis formularul cu datele cartii adaugate-->
+<form action="/add" method="post">
+
+  <div class="mb-3">
+    <label for="InputTitle" class="form-label">Title</label>
+    <input type="text" class="form-control" id="InputTitle" name="InputTitle" value="" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="InputDescription" class="form-label">Description</label>
+    <input type="text" class="form-control" id="InputDescription" name="InputDescription" value="" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="InputRating" class="form-label">Rating</label>
+    <input type="text" class="form-control" id="InputRating" name="InputRating" value="" required>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+  <%- include('partials/footer.ejs'); -%>
